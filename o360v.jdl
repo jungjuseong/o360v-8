@@ -1,0 +1,179 @@
+application {
+    config {
+        baseName o360v
+        applicationType monolith
+        authenticationType oauth2
+        packageName com.incite.o360v
+        prodDatabaseType mysql
+        cacheProvider ehcache
+        buildTool maven
+        clientFramework angular
+        testFrameworks [cypress]
+    }
+    entities *
+}
+
+entity Country {
+    name String required
+}
+
+enum ProjectStatus {
+    READY, STARTED, COMPLETED
+}
+
+enum ProjectFinancialStatus {
+    POOR, BAD, GOOD
+}
+
+enum ProjectDateType {
+    DATE_TYPE1, DATE_TYPE2
+}
+
+enum StakeholderType {
+    STAFF,
+    THIRD_PARTY
+}
+
+enum AudienceType {
+    AUDIENCE_TYPE1, AUDIENCE_TYPE2
+}
+
+enum ChannelType {
+    EMAIL,
+    SNS,
+    PHONE,
+    ZOOM
+}
+
+entity Project {
+    code String required,
+    title String required,
+    fiscalYear LocalDate required,
+    budget BigDecimal required,
+    createdDate LocalDate required,
+    startDate LocalDate required,
+    deploymentDate LocalDate required,
+    endDate LocalDate required,
+    description String,
+    poNumber String required,
+    jiraCode String,
+    jiraUpdate LocalDate,
+    projectStatus ProjectStatus,
+    ProjectFinancialStatus ProjectFinancialStatus
+}
+
+entity JiraSetUp {
+    url String required,
+    apiKey String required,
+    project String required
+}
+
+entity Jira {
+    url String required,
+    apiKey String required,
+    project String required
+}
+
+entity CostCenter {
+    costCenter String required
+}
+
+entity AccountNumber {
+    accountNumber String required
+}
+
+entity ProjectOwner {
+    name String required
+}
+
+entity ProjectComment {
+    createdDate LocalDate required,
+    comment TextBlob required
+}
+
+entity ProjectFile {
+    file AnyBlob required,
+    name String required
+}
+
+entity ProjectDate {
+    date LocalDate required
+    projectDateType ProjectDateType
+}
+
+entity ProjectGoal {
+    name String required,
+    projectCompletion Integer,
+    projectCompletionBurnRate Integer
+}
+
+entity Stakeholder {
+    createdDate LocalDate required,
+    cost BigDecimal,
+    stakeholderType StakeholderType
+}
+
+entity StakeholderComment {
+    createdDate LocalDate required,
+    comment TextBlob required
+}
+
+entity UserGroup {
+    name String required
+}
+
+entity UserGroupAccess { }
+
+entity Company {
+    name String required,
+    logo ImageBlob
+}
+
+entity Area {
+    name String required
+}
+
+entity Brand {
+    name String required
+}
+
+entity Audience { }
+
+entity Channel {
+    channelType ChannelType
+}
+
+relationship ManyToMany {
+    UserGroup { user(login) required } to User with builtInEntity
+    Company { user(login) required } to User with builtInEntity
+    Stakeholder { user(login) required } to User with builtInEntity
+    Project to Country
+}
+
+relationship OneToMany {
+	Project to Project { parentProject(code) }
+	ProjectGoal to Project { goal(name) }
+    Project to ProjectDate { project(code) required }
+    Project to Stakeholder { project(code) required }
+    Project to ProjectFile { project(code) required }
+    Area to Brand { area(name) required }
+    Brand to Audience { brand(name) required }
+    Audience to Channel { audience required }
+    Channel to Project { channel required }
+    UserGroup to UserGroupAccess { userGroup(name) required }
+    Project to ProjectComment { project(title) required }
+    Stakeholder to StakeholderComment { stakeholder required }
+    CostCenter to Project { costCenter(costCenter) }
+    AccountNumber to Project { accountNumber(accountNumber) }
+    ProjectOwner to Project { projectOwner(name) }
+}
+
+relationship ManyToOne {
+    UserGroupAccess { area(name) required } to Area
+    UserGroupAccess { brand(name) required } to Brand
+    UserGroupAccess { Audience required } to Audience
+    UserGroupAccess { Channel required } to Channel
+    UserGroupAccess { country(name) required } to Country
+    StakeholderComment { user(login) required } to User with builtInEntity
+    ProjectComment { user(login) required } to User with builtInEntity
+}

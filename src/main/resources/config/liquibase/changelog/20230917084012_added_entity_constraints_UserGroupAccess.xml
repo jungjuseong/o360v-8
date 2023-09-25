@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity UserGroupAccess.
+    -->
+    <changeSet id="20230917084012-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="area_id"
+                                 baseTableName="user_group_access"
+                                 constraintName="fk_user_group_access__area_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="area"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="brand_id"
+                                 baseTableName="user_group_access"
+                                 constraintName="fk_user_group_access__brand_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="brand"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="audience_id"
+                                 baseTableName="user_group_access"
+                                 constraintName="fk_user_group_access__audience_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="audience"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="channel_id"
+                                 baseTableName="user_group_access"
+                                 constraintName="fk_user_group_access__channel_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="channel"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="country_id"
+                                 baseTableName="user_group_access"
+                                 constraintName="fk_user_group_access__country_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="country"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="user_group_id"
+                                 baseTableName="user_group_access"
+                                 constraintName="fk_user_group_access__user_group_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user_group"
+                                 />
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,26 @@
+{
+  "o360VApp": {
+    "userGroup": {
+      "home": {
+        "title": "User Groups",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new User Group",
+        "createOrEditLabel": "Create or edit a User Group",
+        "notFound": "No User Groups found"
+      },
+      "created": "A new User Group is created with identifier {{ param }}",
+      "updated": "A User Group is updated with identifier {{ param }}",
+      "deleted": "A User Group is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete User Group {{ id }}?"
+      },
+      "detail": {
+        "title": "User Group"
+      },
+      "id": "ID",
+      "name": "Name",
+      "userGroupAccess": "User Group Access",
+      "user": "User"
+    }
+  }
+}

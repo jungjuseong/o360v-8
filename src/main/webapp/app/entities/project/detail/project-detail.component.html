@@ -1,0 +1,129 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="project">
+      <h2 data-cy="projectDetailsHeading"><span jhiTranslate="o360VApp.project.detail.title">Project</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ project.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="o360VApp.project.code">Code</span></dt>
+        <dd>
+          <span>{{ project.code }}</span>
+        </dd>
+        <dt><span jhiTranslate="o360VApp.project.title">Title</span></dt>
+        <dd>
+          <span>{{ project.title }}</span>
+        </dd>
+        <dt><span jhiTranslate="o360VApp.project.fiscalYear">Fiscal Year</span></dt>
+        <dd>
+          <span>{{ project.fiscalYear | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="o360VApp.project.budget">Budget</span></dt>
+        <dd>
+          <span>{{ project.budget }}</span>
+        </dd>
+        <dt><span jhiTranslate="o360VApp.project.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ project.createdDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="o360VApp.project.startDate">Start Date</span></dt>
+        <dd>
+          <span>{{ project.startDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="o360VApp.project.deploymentDate">Deployment Date</span></dt>
+        <dd>
+          <span>{{ project.deploymentDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="o360VApp.project.endDate">End Date</span></dt>
+        <dd>
+          <span>{{ project.endDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="o360VApp.project.description">Description</span></dt>
+        <dd>
+          <span>{{ project.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="o360VApp.project.poNumber">Po Number</span></dt>
+        <dd>
+          <span>{{ project.poNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="o360VApp.project.jiraCode">Jira Code</span></dt>
+        <dd>
+          <span>{{ project.jiraCode }}</span>
+        </dd>
+        <dt><span jhiTranslate="o360VApp.project.jiraUpdate">Jira Update</span></dt>
+        <dd>
+          <span>{{ project.jiraUpdate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="o360VApp.project.projectStatus">Project Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'o360VApp.ProjectStatus.' + project.projectStatus }}">{{ project.projectStatus }}</span>
+        </dd>
+        <dt><span jhiTranslate="o360VApp.project.projectFinancialStatus">Project Financial Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'o360VApp.ProjectFinancialStatus.' + project.projectFinancialStatus }}">{{
+            project.projectFinancialStatus
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="o360VApp.project.country">Country</span></dt>
+        <dd>
+          <span *ngFor="let country of project.countries; let last = last">
+            <a [routerLink]="['/country', country.id, 'view']">{{ country.id }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span jhiTranslate="o360VApp.project.parentProject">Parent Project</span></dt>
+        <dd>
+          <div *ngIf="project.parentProject">
+            <a [routerLink]="['/project', project.parentProject.id, 'view']">{{ project.parentProject.code }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="o360VApp.project.goal">Goal</span></dt>
+        <dd>
+          <div *ngIf="project.goal">
+            <a [routerLink]="['/project-goal', project.goal.id, 'view']">{{ project.goal.name }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="o360VApp.project.channel">Channel</span></dt>
+        <dd>
+          <div *ngIf="project.channel">
+            <a [routerLink]="['/channel', project.channel.id, 'view']">{{ project.channel.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="o360VApp.project.costCenter">Cost Center</span></dt>
+        <dd>
+          <div *ngIf="project.costCenter">
+            <a [routerLink]="['/cost-center', project.costCenter.id, 'view']">{{ project.costCenter.costCenter }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="o360VApp.project.accountNumber">Account Number</span></dt>
+        <dd>
+          <div *ngIf="project.accountNumber">
+            <a [routerLink]="['/account-number', project.accountNumber.id, 'view']">{{ project.accountNumber.accountNumber }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="o360VApp.project.projectOwner">Project Owner</span></dt>
+        <dd>
+          <div *ngIf="project.projectOwner">
+            <a [routerLink]="['/project-owner', project.projectOwner.id, 'view']">{{ project.projectOwner.name }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/project', project.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

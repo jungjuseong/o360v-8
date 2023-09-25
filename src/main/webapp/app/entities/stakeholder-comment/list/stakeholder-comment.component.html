@@ -1,0 +1,115 @@
+<div>
+  <h2 id="page-heading" data-cy="StakeholderCommentHeading">
+    <span jhiTranslate="o360VApp.stakeholderComment.home.title">Stakeholder Comments</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="o360VApp.stakeholderComment.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-stakeholder-comment"
+        [routerLink]="['/stakeholder-comment/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="o360VApp.stakeholderComment.home.createLabel"> Create a new Stakeholder Comment </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="stakeholderComments?.length === 0">
+    <span jhiTranslate="o360VApp.stakeholderComment.home.notFound">No Stakeholder Comments found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="stakeholderComments && stakeholderComments.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="createdDate">
+            <div class="d-flex">
+              <span jhiTranslate="o360VApp.stakeholderComment.createdDate">Created Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="comment">
+            <div class="d-flex">
+              <span jhiTranslate="o360VApp.stakeholderComment.comment">Comment</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="user.login">
+            <div class="d-flex">
+              <span jhiTranslate="o360VApp.stakeholderComment.user">User</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="stakeholder.id">
+            <div class="d-flex">
+              <span jhiTranslate="o360VApp.stakeholderComment.stakeholder">Stakeholder</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let stakeholderComment of stakeholderComments; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/stakeholder-comment', stakeholderComment.id, 'view']">{{ stakeholderComment.id }}</a>
+          </td>
+          <td>{{ stakeholderComment.createdDate | formatMediumDate }}</td>
+          <td>{{ stakeholderComment.comment }}</td>
+          <td>
+            {{ stakeholderComment.user?.login }}
+          </td>
+          <td>
+            <div *ngIf="stakeholderComment.stakeholder">
+              <a [routerLink]="['/stakeholder', stakeholderComment.stakeholder.id, 'view']">{{ stakeholderComment.stakeholder.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/stakeholder-comment', stakeholderComment.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/stakeholder-comment', stakeholderComment.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(stakeholderComment)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

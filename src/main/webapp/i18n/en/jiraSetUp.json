@@ -1,0 +1,26 @@
+{
+  "o360VApp": {
+    "jiraSetUp": {
+      "home": {
+        "title": "Jira Set Ups",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Jira Set Up",
+        "createOrEditLabel": "Create or edit a Jira Set Up",
+        "notFound": "No Jira Set Ups found"
+      },
+      "created": "A new Jira Set Up is created with identifier {{ param }}",
+      "updated": "A Jira Set Up is updated with identifier {{ param }}",
+      "deleted": "A Jira Set Up is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Jira Set Up {{ id }}?"
+      },
+      "detail": {
+        "title": "Jira Set Up"
+      },
+      "id": "ID",
+      "url": "Url",
+      "apiKey": "Api Key",
+      "project": "Project"
+    }
+  }
+}

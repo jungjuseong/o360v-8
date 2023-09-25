@@ -1,0 +1,10 @@
+{
+  "o360VApp": {
+    "ProjectStatus": {
+      "null": "",
+      "READY": "READY",
+      "STARTED": "STARTED",
+      "COMPLETED": "COMPLETED"
+    }
+  }
+}

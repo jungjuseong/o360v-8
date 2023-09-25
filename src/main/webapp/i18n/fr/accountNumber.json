@@ -1,0 +1,25 @@
+{
+  "o360VApp": {
+    "accountNumber": {
+      "home": {
+        "title": "AccountNumbers",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Account Number",
+        "createOrEditLabel": "Créer ou éditer un Account Number",
+        "notFound": "Aucun Account Number trouvé"
+      },
+      "created": "Un nouveau Account Number a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Account Number avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Account Number avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Account Number {{ id }} ?"
+      },
+      "detail": {
+        "title": "Account Number"
+      },
+      "id": "ID",
+      "accountNumber": "Account Number",
+      "project": "Project"
+    }
+  }
+}

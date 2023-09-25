@@ -1,0 +1,11 @@
+{
+  "o360VApp": {
+    "ChannelType": {
+      "null": "",
+      "EMAIL": "EMAIL",
+      "SNS": "SNS",
+      "PHONE": "PHONE",
+      "ZOOM": "ZOOM"
+    }
+  }
+}

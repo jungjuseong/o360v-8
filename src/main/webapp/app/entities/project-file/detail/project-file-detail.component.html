@@ -1,0 +1,45 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="projectFile">
+      <h2 data-cy="projectFileDetailsHeading"><span jhiTranslate="o360VApp.projectFile.detail.title">Project File</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ projectFile.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="o360VApp.projectFile.file">File</span></dt>
+        <dd>
+          <div *ngIf="projectFile.file">
+            <a (click)="openFile(projectFile.file, projectFile.fileContentType)" jhiTranslate="entity.action.open">Open</a>
+            {{ projectFile.fileContentType }}, {{ byteSize(projectFile.file) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="o360VApp.projectFile.name">Name</span></dt>
+        <dd>
+          <span>{{ projectFile.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="o360VApp.projectFile.project">Project</span></dt>
+        <dd>
+          <div *ngIf="projectFile.project">
+            <a [routerLink]="['/project', projectFile.project.id, 'view']">{{ projectFile.project.code }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/project-file', projectFile.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity Channel.
+    -->
+    <changeSet id="20230917084512-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="audience_id"
+                                 baseTableName="channel"
+                                 constraintName="fk_channel__audience_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="audience"
+                                 />
+    </changeSet>
+</databaseChangeLog>

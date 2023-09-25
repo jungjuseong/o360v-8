@@ -1,0 +1,26 @@
+{
+  "o360VApp": {
+    "jira": {
+      "home": {
+        "title": "Jiras",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Jira",
+        "createOrEditLabel": "Create or edit a Jira",
+        "notFound": "No Jiras found"
+      },
+      "created": "A new Jira is created with identifier {{ param }}",
+      "updated": "A Jira is updated with identifier {{ param }}",
+      "deleted": "A Jira is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Jira {{ id }}?"
+      },
+      "detail": {
+        "title": "Jira"
+      },
+      "id": "ID",
+      "url": "Url",
+      "apiKey": "Api Key",
+      "project": "Project"
+    }
+  }
+}

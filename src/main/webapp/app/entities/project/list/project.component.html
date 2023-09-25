@@ -1,0 +1,259 @@
+<div>
+  <h2 id="page-heading" data-cy="ProjectHeading">
+    <span jhiTranslate="o360VApp.project.home.title">Projects</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="o360VApp.project.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-project"
+        [routerLink]="['/project/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="o360VApp.project.home.createLabel"> Create a new Project </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="projects?.length === 0">
+    <span jhiTranslate="o360VApp.project.home.notFound">No Projects found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="projects && projects.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="code">
+            <div class="d-flex">
+              <span jhiTranslate="o360VApp.project.code">Code</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="title">
+            <div class="d-flex">
+              <span jhiTranslate="o360VApp.project.title">Title</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fiscalYear">
+            <div class="d-flex">
+              <span jhiTranslate="o360VApp.project.fiscalYear">Fiscal Year</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="budget">
+            <div class="d-flex">
+              <span jhiTranslate="o360VApp.project.budget">Budget</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="createdDate">
+            <div class="d-flex">
+              <span jhiTranslate="o360VApp.project.createdDate">Created Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="startDate">
+            <div class="d-flex">
+              <span jhiTranslate="o360VApp.project.startDate">Start Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="deploymentDate">
+            <div class="d-flex">
+              <span jhiTranslate="o360VApp.project.deploymentDate">Deployment Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="endDate">
+            <div class="d-flex">
+              <span jhiTranslate="o360VApp.project.endDate">End Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="description">
+            <div class="d-flex">
+              <span jhiTranslate="o360VApp.project.description">Description</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="poNumber">
+            <div class="d-flex">
+              <span jhiTranslate="o360VApp.project.poNumber">Po Number</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="jiraCode">
+            <div class="d-flex">
+              <span jhiTranslate="o360VApp.project.jiraCode">Jira Code</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="jiraUpdate">
+            <div class="d-flex">
+              <span jhiTranslate="o360VApp.project.jiraUpdate">Jira Update</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="projectStatus">
+            <div class="d-flex">
+              <span jhiTranslate="o360VApp.project.projectStatus">Project Status</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="projectFinancialStatus">
+            <div class="d-flex">
+              <span jhiTranslate="o360VApp.project.projectFinancialStatus">Project Financial Status</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="country.id">
+            <div class="d-flex">
+              <span jhiTranslate="o360VApp.project.country">Country</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="parentProject.code">
+            <div class="d-flex">
+              <span jhiTranslate="o360VApp.project.parentProject">Parent Project</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="goal.name">
+            <div class="d-flex">
+              <span jhiTranslate="o360VApp.project.goal">Goal</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="channel.id">
+            <div class="d-flex">
+              <span jhiTranslate="o360VApp.project.channel">Channel</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="costCenter.costCenter">
+            <div class="d-flex">
+              <span jhiTranslate="o360VApp.project.costCenter">Cost Center</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="accountNumber.accountNumber">
+            <div class="d-flex">
+              <span jhiTranslate="o360VApp.project.accountNumber">Account Number</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="projectOwner.name">
+            <div class="d-flex">
+              <span jhiTranslate="o360VApp.project.projectOwner">Project Owner</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let project of projects; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/project', project.id, 'view']">{{ project.id }}</a>
+          </td>
+          <td>{{ project.code }}</td>
+          <td>{{ project.title }}</td>
+          <td>{{ project.fiscalYear | formatMediumDate }}</td>
+          <td>{{ project.budget }}</td>
+          <td>{{ project.createdDate | formatMediumDate }}</td>
+          <td>{{ project.startDate | formatMediumDate }}</td>
+          <td>{{ project.deploymentDate | formatMediumDate }}</td>
+          <td>{{ project.endDate | formatMediumDate }}</td>
+          <td>{{ project.description }}</td>
+          <td>{{ project.poNumber }}</td>
+          <td>{{ project.jiraCode }}</td>
+          <td>{{ project.jiraUpdate | formatMediumDate }}</td>
+          <td jhiTranslate="{{ 'o360VApp.ProjectStatus.' + project.projectStatus }}">{{ project.projectStatus }}</td>
+          <td jhiTranslate="{{ 'o360VApp.ProjectFinancialStatus.' + project.projectFinancialStatus }}">
+            {{ project.projectFinancialStatus }}
+          </td>
+          <td>
+            <span *ngFor="let country of project.countries; let last = last">
+              <a class="form-control-static" [routerLink]="['/country', country.id, 'view']">{{ country.id }}</a
+              >{{ last ? '' : ', ' }}
+            </span>
+          </td>
+          <td>
+            <div *ngIf="project.parentProject">
+              <a [routerLink]="['/project', project.parentProject.id, 'view']">{{ project.parentProject.code }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="project.goal">
+              <a [routerLink]="['/project-goal', project.goal.id, 'view']">{{ project.goal.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="project.channel">
+              <a [routerLink]="['/channel', project.channel.id, 'view']">{{ project.channel.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="project.costCenter">
+              <a [routerLink]="['/cost-center', project.costCenter.id, 'view']">{{ project.costCenter.costCenter }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="project.accountNumber">
+              <a [routerLink]="['/account-number', project.accountNumber.id, 'view']">{{ project.accountNumber.accountNumber }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="project.projectOwner">
+              <a [routerLink]="['/project-owner', project.projectOwner.id, 'view']">{{ project.projectOwner.name }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/project', project.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/project', project.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(project)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

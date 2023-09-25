@@ -1,0 +1,402 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-project-heading" data-cy="ProjectCreateUpdateHeading" jhiTranslate="o360VApp.project.home.createOrEditLabel">
+        Create or edit a Project
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="o360VApp.project.code" for="field_code">Code</label>
+          <input type="text" class="form-control" name="code" id="field_code" data-cy="code" formControlName="code" />
+          <div *ngIf="editForm.get('code')!.invalid && (editForm.get('code')!.dirty || editForm.get('code')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('code')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="o360VApp.project.title" for="field_title">Title</label>
+          <input type="text" class="form-control" name="title" id="field_title" data-cy="title" formControlName="title" />
+          <div *ngIf="editForm.get('title')!.invalid && (editForm.get('title')!.dirty || editForm.get('title')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('title')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="o360VApp.project.fiscalYear" for="field_fiscalYear">Fiscal Year</label>
+          <div class="input-group">
+            <input
+              id="field_fiscalYear"
+              data-cy="fiscalYear"
+              type="text"
+              class="form-control"
+              name="fiscalYear"
+              ngbDatepicker
+              #fiscalYearDp="ngbDatepicker"
+              formControlName="fiscalYear"
+            />
+            <button type="button" class="btn btn-secondary" (click)="fiscalYearDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+          <div *ngIf="editForm.get('fiscalYear')!.invalid && (editForm.get('fiscalYear')!.dirty || editForm.get('fiscalYear')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('fiscalYear')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="o360VApp.project.budget" for="field_budget">Budget</label>
+          <input type="number" class="form-control" name="budget" id="field_budget" data-cy="budget" formControlName="budget" />
+          <div *ngIf="editForm.get('budget')!.invalid && (editForm.get('budget')!.dirty || editForm.get('budget')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('budget')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('budget')?.errors?.number" jhiTranslate="entity.validation.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="o360VApp.project.createdDate" for="field_createdDate">Created Date</label>
+          <div class="input-group">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="text"
+              class="form-control"
+              name="createdDate"
+              ngbDatepicker
+              #createdDateDp="ngbDatepicker"
+              formControlName="createdDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="createdDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+          <div *ngIf="editForm.get('createdDate')!.invalid && (editForm.get('createdDate')!.dirty || editForm.get('createdDate')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('createdDate')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="o360VApp.project.startDate" for="field_startDate">Start Date</label>
+          <div class="input-group">
+            <input
+              id="field_startDate"
+              data-cy="startDate"
+              type="text"
+              class="form-control"
+              name="startDate"
+              ngbDatepicker
+              #startDateDp="ngbDatepicker"
+              formControlName="startDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="startDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+          <div *ngIf="editForm.get('startDate')!.invalid && (editForm.get('startDate')!.dirty || editForm.get('startDate')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('startDate')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="o360VApp.project.deploymentDate" for="field_deploymentDate">Deployment Date</label>
+          <div class="input-group">
+            <input
+              id="field_deploymentDate"
+              data-cy="deploymentDate"
+              type="text"
+              class="form-control"
+              name="deploymentDate"
+              ngbDatepicker
+              #deploymentDateDp="ngbDatepicker"
+              formControlName="deploymentDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="deploymentDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+          <div
+            *ngIf="
+              editForm.get('deploymentDate')!.invalid && (editForm.get('deploymentDate')!.dirty || editForm.get('deploymentDate')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('deploymentDate')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="o360VApp.project.endDate" for="field_endDate">End Date</label>
+          <div class="input-group">
+            <input
+              id="field_endDate"
+              data-cy="endDate"
+              type="text"
+              class="form-control"
+              name="endDate"
+              ngbDatepicker
+              #endDateDp="ngbDatepicker"
+              formControlName="endDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="endDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+          <div *ngIf="editForm.get('endDate')!.invalid && (editForm.get('endDate')!.dirty || editForm.get('endDate')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('endDate')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="o360VApp.project.description" for="field_description">Description</label>
+          <input
+            type="text"
+            class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="o360VApp.project.poNumber" for="field_poNumber">Po Number</label>
+          <input type="text" class="form-control" name="poNumber" id="field_poNumber" data-cy="poNumber" formControlName="poNumber" />
+          <div *ngIf="editForm.get('poNumber')!.invalid && (editForm.get('poNumber')!.dirty || editForm.get('poNumber')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('poNumber')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="o360VApp.project.jiraCode" for="field_jiraCode">Jira Code</label>
+          <input type="text" class="form-control" name="jiraCode" id="field_jiraCode" data-cy="jiraCode" formControlName="jiraCode" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="o360VApp.project.jiraUpdate" for="field_jiraUpdate">Jira Update</label>
+          <div class="input-group">
+            <input
+              id="field_jiraUpdate"
+              data-cy="jiraUpdate"
+              type="text"
+              class="form-control"
+              name="jiraUpdate"
+              ngbDatepicker
+              #jiraUpdateDp="ngbDatepicker"
+              formControlName="jiraUpdate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="jiraUpdateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="o360VApp.project.projectStatus" for="field_projectStatus">Project Status</label>
+          <select
+            class="form-control"
+            name="projectStatus"
+            formControlName="projectStatus"
+            id="field_projectStatus"
+            data-cy="projectStatus"
+          >
+            <option [ngValue]="null">{{ 'o360VApp.ProjectStatus.null' | translate }}</option>
+            <option *ngFor="let projectStatus of projectStatusValues" [value]="projectStatus">
+              {{ 'o360VApp.ProjectStatus.' + projectStatus | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="o360VApp.project.projectFinancialStatus" for="field_projectFinancialStatus"
+            >Project Financial Status</label
+          >
+          <select
+            class="form-control"
+            name="projectFinancialStatus"
+            formControlName="projectFinancialStatus"
+            id="field_projectFinancialStatus"
+            data-cy="projectFinancialStatus"
+          >
+            <option [ngValue]="null">{{ 'o360VApp.ProjectFinancialStatus.null' | translate }}</option>
+            <option *ngFor="let projectFinancialStatus of projectFinancialStatusValues" [value]="projectFinancialStatus">
+              {{ 'o360VApp.ProjectFinancialStatus.' + projectFinancialStatus | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label jhiTranslate="o360VApp.project.country" for="field_countries">Country</label>
+          <select
+            class="form-control"
+            id="field_countries"
+            data-cy="country"
+            multiple
+            name="countries"
+            formControlName="countries"
+            [compareWith]="compareCountry"
+          >
+            <option [ngValue]="countryOption" *ngFor="let countryOption of countriesSharedCollection">{{ countryOption.id }}</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="o360VApp.project.parentProject" for="field_parentProject">Parent Project</label>
+          <select
+            class="form-control"
+            id="field_parentProject"
+            data-cy="parentProject"
+            name="parentProject"
+            formControlName="parentProject"
+            [compareWith]="compareProject"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="projectOption" *ngFor="let projectOption of projectsSharedCollection">{{ projectOption.code }}</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="o360VApp.project.goal" for="field_goal">Goal</label>
+          <select class="form-control" id="field_goal" data-cy="goal" name="goal" formControlName="goal" [compareWith]="compareProjectGoal">
+            <option [ngValue]="null"></option>
+            <option [ngValue]="projectGoalOption" *ngFor="let projectGoalOption of projectGoalsSharedCollection">
+              {{ projectGoalOption.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="o360VApp.project.channel" for="field_channel">Channel</label>
+          <select
+            class="form-control"
+            id="field_channel"
+            data-cy="channel"
+            name="channel"
+            formControlName="channel"
+            [compareWith]="compareChannel"
+          >
+            <option *ngIf="editForm.get(['channel'])!.value == null" [ngValue]="null" selected></option>
+            <option [ngValue]="channelOption" *ngFor="let channelOption of channelsSharedCollection">{{ channelOption.id }}</option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['channel'])!.invalid && (editForm.get(['channel'])!.dirty || editForm.get(['channel'])!.touched)">
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['channel'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="o360VApp.project.costCenter" for="field_costCenter">Cost Center</label>
+          <select
+            class="form-control"
+            id="field_costCenter"
+            data-cy="costCenter"
+            name="costCenter"
+            formControlName="costCenter"
+            [compareWith]="compareCostCenter"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="costCenterOption" *ngFor="let costCenterOption of costCentersSharedCollection">
+              {{ costCenterOption.costCenter }}
+            </option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="o360VApp.project.accountNumber" for="field_accountNumber">Account Number</label>
+          <select
+            class="form-control"
+            id="field_accountNumber"
+            data-cy="accountNumber"
+            name="accountNumber"
+            formControlName="accountNumber"
+            [compareWith]="compareAccountNumber"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="accountNumberOption" *ngFor="let accountNumberOption of accountNumbersSharedCollection">
+              {{ accountNumberOption.accountNumber }}
+            </option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="o360VApp.project.projectOwner" for="field_projectOwner">Project Owner</label>
+          <select
+            class="form-control"
+            id="field_projectOwner"
+            data-cy="projectOwner"
+            name="projectOwner"
+            formControlName="projectOwner"
+            [compareWith]="compareProjectOwner"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="projectOwnerOption" *ngFor="let projectOwnerOption of projectOwnersSharedCollection">
+              {{ projectOwnerOption.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

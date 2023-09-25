@@ -1,0 +1,27 @@
+{
+  "o360VApp": {
+    "projectComment": {
+      "home": {
+        "title": "ProjectComments",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Project Comment",
+        "createOrEditLabel": "Créer ou éditer un Project Comment",
+        "notFound": "Aucun Project Comment trouvé"
+      },
+      "created": "Un nouveau Project Comment a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Project Comment avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Project Comment avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Project Comment {{ id }} ?"
+      },
+      "detail": {
+        "title": "Project Comment"
+      },
+      "id": "ID",
+      "createdDate": "Created Date",
+      "comment": "Comment",
+      "user": "User",
+      "project": "Project"
+    }
+  }
+}

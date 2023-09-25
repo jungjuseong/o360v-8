@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="projectDate">
+      <h2 data-cy="projectDateDetailsHeading"><span jhiTranslate="o360VApp.projectDate.detail.title">Project Date</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ projectDate.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="o360VApp.projectDate.date">Date</span></dt>
+        <dd>
+          <span>{{ projectDate.date | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="o360VApp.projectDate.projectDateType">Project Date Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'o360VApp.ProjectDateType.' + projectDate.projectDateType }}">{{ projectDate.projectDateType }}</span>
+        </dd>
+        <dt><span jhiTranslate="o360VApp.projectDate.project">Project</span></dt>
+        <dd>
+          <div *ngIf="projectDate.project">
+            <a [routerLink]="['/project', projectDate.project.id, 'view']">{{ projectDate.project.code }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/project-date', projectDate.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

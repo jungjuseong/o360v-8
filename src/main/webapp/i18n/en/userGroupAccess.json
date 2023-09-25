@@ -1,0 +1,29 @@
+{
+  "o360VApp": {
+    "userGroupAccess": {
+      "home": {
+        "title": "User Group Accesses",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new User Group Access",
+        "createOrEditLabel": "Create or edit a User Group Access",
+        "notFound": "No User Group Accesses found"
+      },
+      "created": "A new User Group Access is created with identifier {{ param }}",
+      "updated": "A User Group Access is updated with identifier {{ param }}",
+      "deleted": "A User Group Access is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete User Group Access {{ id }}?"
+      },
+      "detail": {
+        "title": "User Group Access"
+      },
+      "id": "ID",
+      "area": "Area",
+      "brand": "Brand",
+      "audience": "Audience",
+      "channel": "Channel",
+      "country": "Country",
+      "userGroup": "User Group"
+    }
+  }
+}

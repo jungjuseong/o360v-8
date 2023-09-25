@@ -1,0 +1,29 @@
+{
+  "o360VApp": {
+    "stakeholder": {
+      "home": {
+        "title": "Stakeholders",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Stakeholder",
+        "createOrEditLabel": "Créer ou éditer un Stakeholder",
+        "notFound": "Aucun Stakeholder trouvé"
+      },
+      "created": "Un nouveau Stakeholder a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Stakeholder avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Stakeholder avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Stakeholder {{ id }} ?"
+      },
+      "detail": {
+        "title": "Stakeholder"
+      },
+      "id": "ID",
+      "createdDate": "Created Date",
+      "cost": "Cost",
+      "stakeholderType": "Stakeholder Type",
+      "stakeholderComment": "Stakeholder Comment",
+      "user": "User",
+      "project": "Project"
+    }
+  }
+}

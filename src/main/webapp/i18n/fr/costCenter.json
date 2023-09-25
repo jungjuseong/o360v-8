@@ -1,0 +1,25 @@
+{
+  "o360VApp": {
+    "costCenter": {
+      "home": {
+        "title": "CostCenters",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Cost Center",
+        "createOrEditLabel": "Créer ou éditer un Cost Center",
+        "notFound": "Aucun Cost Center trouvé"
+      },
+      "created": "Un nouveau Cost Center a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Cost Center avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Cost Center avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Cost Center {{ id }} ?"
+      },
+      "detail": {
+        "title": "Cost Center"
+      },
+      "id": "ID",
+      "costCenter": "Cost Center",
+      "project": "Project"
+    }
+  }
+}

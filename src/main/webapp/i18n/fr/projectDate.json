@@ -1,0 +1,26 @@
+{
+  "o360VApp": {
+    "projectDate": {
+      "home": {
+        "title": "ProjectDates",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Project Date",
+        "createOrEditLabel": "Créer ou éditer un Project Date",
+        "notFound": "Aucun Project Date trouvé"
+      },
+      "created": "Un nouveau Project Date a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Project Date avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Project Date avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Project Date {{ id }} ?"
+      },
+      "detail": {
+        "title": "Project Date"
+      },
+      "id": "ID",
+      "date": "Date",
+      "projectDateType": "Project Date Type",
+      "project": "Project"
+    }
+  }
+}

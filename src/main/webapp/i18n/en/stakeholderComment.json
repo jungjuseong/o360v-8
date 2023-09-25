@@ -1,0 +1,27 @@
+{
+  "o360VApp": {
+    "stakeholderComment": {
+      "home": {
+        "title": "Stakeholder Comments",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Stakeholder Comment",
+        "createOrEditLabel": "Create or edit a Stakeholder Comment",
+        "notFound": "No Stakeholder Comments found"
+      },
+      "created": "A new Stakeholder Comment is created with identifier {{ param }}",
+      "updated": "A Stakeholder Comment is updated with identifier {{ param }}",
+      "deleted": "A Stakeholder Comment is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Stakeholder Comment {{ id }}?"
+      },
+      "detail": {
+        "title": "Stakeholder Comment"
+      },
+      "id": "ID",
+      "createdDate": "Created Date",
+      "comment": "Comment",
+      "user": "User",
+      "stakeholder": "Stakeholder"
+    }
+  }
+}

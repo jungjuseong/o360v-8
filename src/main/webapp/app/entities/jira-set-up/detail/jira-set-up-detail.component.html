@@ -1,0 +1,40 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="jiraSetUp">
+      <h2 data-cy="jiraSetUpDetailsHeading"><span jhiTranslate="o360VApp.jiraSetUp.detail.title">Jira Set Up</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ jiraSetUp.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="o360VApp.jiraSetUp.url">Url</span></dt>
+        <dd>
+          <span>{{ jiraSetUp.url }}</span>
+        </dd>
+        <dt><span jhiTranslate="o360VApp.jiraSetUp.apiKey">Api Key</span></dt>
+        <dd>
+          <span>{{ jiraSetUp.apiKey }}</span>
+        </dd>
+        <dt><span jhiTranslate="o360VApp.jiraSetUp.project">Project</span></dt>
+        <dd>
+          <span>{{ jiraSetUp.project }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/jira-set-up', jiraSetUp.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

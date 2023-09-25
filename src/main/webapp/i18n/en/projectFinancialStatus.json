@@ -1,0 +1,10 @@
+{
+  "o360VApp": {
+    "ProjectFinancialStatus": {
+      "null": "",
+      "POOR": "POOR",
+      "BAD": "BAD",
+      "GOOD": "GOOD"
+    }
+  }
+}

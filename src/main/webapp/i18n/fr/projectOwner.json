@@ -1,0 +1,25 @@
+{
+  "o360VApp": {
+    "projectOwner": {
+      "home": {
+        "title": "ProjectOwners",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Project Owner",
+        "createOrEditLabel": "Créer ou éditer un Project Owner",
+        "notFound": "Aucun Project Owner trouvé"
+      },
+      "created": "Un nouveau Project Owner a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Project Owner avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Project Owner avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Project Owner {{ id }} ?"
+      },
+      "detail": {
+        "title": "Project Owner"
+      },
+      "id": "ID",
+      "name": "Name",
+      "project": "Project"
+    }
+  }
+}

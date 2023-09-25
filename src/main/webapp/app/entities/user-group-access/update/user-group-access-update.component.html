@@ -1,0 +1,162 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-user-group-access-heading"
+        data-cy="UserGroupAccessCreateUpdateHeading"
+        jhiTranslate="o360VApp.userGroupAccess.home.createOrEditLabel"
+      >
+        Create or edit a User Group Access
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="o360VApp.userGroupAccess.area" for="field_area">Area</label>
+          <select class="form-control" id="field_area" data-cy="area" name="area" formControlName="area" [compareWith]="compareArea">
+            <option *ngIf="!editForm.get('area')!.value" [ngValue]="null" selected></option>
+            <option [ngValue]="areaOption" *ngFor="let areaOption of areasSharedCollection">{{ areaOption.name }}</option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['area'])!.invalid && (editForm.get(['area'])!.dirty || editForm.get(['area'])!.touched)">
+          <small class="form-text text-danger" *ngIf="editForm.get(['area'])?.errors?.required" jhiTranslate="entity.validation.required">
+            This field is required.
+          </small>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="o360VApp.userGroupAccess.brand" for="field_brand">Brand</label>
+          <select class="form-control" id="field_brand" data-cy="brand" name="brand" formControlName="brand" [compareWith]="compareBrand">
+            <option *ngIf="!editForm.get('brand')!.value" [ngValue]="null" selected></option>
+            <option [ngValue]="brandOption" *ngFor="let brandOption of brandsSharedCollection">{{ brandOption.name }}</option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['brand'])!.invalid && (editForm.get(['brand'])!.dirty || editForm.get(['brand'])!.touched)">
+          <small class="form-text text-danger" *ngIf="editForm.get(['brand'])?.errors?.required" jhiTranslate="entity.validation.required">
+            This field is required.
+          </small>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="o360VApp.userGroupAccess.audience" for="field_audience">Audience</label>
+          <select
+            class="form-control"
+            id="field_audience"
+            data-cy="audience"
+            name="audience"
+            formControlName="audience"
+            [compareWith]="compareAudience"
+          >
+            <option *ngIf="!editForm.get('audience')!.value" [ngValue]="null" selected></option>
+            <option [ngValue]="audienceOption" *ngFor="let audienceOption of audiencesSharedCollection">{{ audienceOption.id }}</option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['audience'])!.invalid && (editForm.get(['audience'])!.dirty || editForm.get(['audience'])!.touched)">
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['audience'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="o360VApp.userGroupAccess.channel" for="field_channel">Channel</label>
+          <select
+            class="form-control"
+            id="field_channel"
+            data-cy="channel"
+            name="channel"
+            formControlName="channel"
+            [compareWith]="compareChannel"
+          >
+            <option *ngIf="!editForm.get('channel')!.value" [ngValue]="null" selected></option>
+            <option [ngValue]="channelOption" *ngFor="let channelOption of channelsSharedCollection">{{ channelOption.id }}</option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['channel'])!.invalid && (editForm.get(['channel'])!.dirty || editForm.get(['channel'])!.touched)">
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['channel'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="o360VApp.userGroupAccess.country" for="field_country">Country</label>
+          <select
+            class="form-control"
+            id="field_country"
+            data-cy="country"
+            name="country"
+            formControlName="country"
+            [compareWith]="compareCountry"
+          >
+            <option *ngIf="!editForm.get('country')!.value" [ngValue]="null" selected></option>
+            <option [ngValue]="countryOption" *ngFor="let countryOption of countriesSharedCollection">{{ countryOption.name }}</option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['country'])!.invalid && (editForm.get(['country'])!.dirty || editForm.get(['country'])!.touched)">
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['country'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="o360VApp.userGroupAccess.userGroup" for="field_userGroup">User Group</label>
+          <select
+            class="form-control"
+            id="field_userGroup"
+            data-cy="userGroup"
+            name="userGroup"
+            formControlName="userGroup"
+            [compareWith]="compareUserGroup"
+          >
+            <option *ngIf="editForm.get(['userGroup'])!.value == null" [ngValue]="null" selected></option>
+            <option [ngValue]="userGroupOption" *ngFor="let userGroupOption of userGroupsSharedCollection">
+              {{ userGroupOption.name }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['userGroup'])!.invalid && (editForm.get(['userGroup'])!.dirty || editForm.get(['userGroup'])!.touched)">
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['userGroup'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

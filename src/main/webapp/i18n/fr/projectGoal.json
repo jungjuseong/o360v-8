@@ -1,0 +1,27 @@
+{
+  "o360VApp": {
+    "projectGoal": {
+      "home": {
+        "title": "ProjectGoals",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Project Goal",
+        "createOrEditLabel": "Créer ou éditer un Project Goal",
+        "notFound": "Aucun Project Goal trouvé"
+      },
+      "created": "Un nouveau Project Goal a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Project Goal avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Project Goal avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Project Goal {{ id }} ?"
+      },
+      "detail": {
+        "title": "Project Goal"
+      },
+      "id": "ID",
+      "name": "Name",
+      "projectCompletion": "Project Completion",
+      "projectCompletionBurnRate": "Project Completion Burn Rate",
+      "project": "Project"
+    }
+  }
+}

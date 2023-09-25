@@ -1,0 +1,26 @@
+{
+  "o360VApp": {
+    "channel": {
+      "home": {
+        "title": "Channels",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Channel",
+        "createOrEditLabel": "Créer ou éditer un Channel",
+        "notFound": "Aucun Channel trouvé"
+      },
+      "created": "Un nouveau Channel a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Channel avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Channel avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Channel {{ id }} ?"
+      },
+      "detail": {
+        "title": "Channel"
+      },
+      "id": "ID",
+      "channelType": "Channel Type",
+      "project": "Project",
+      "audience": "Audience"
+    }
+  }
+}

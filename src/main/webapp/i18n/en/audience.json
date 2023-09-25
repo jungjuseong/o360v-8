@@ -1,0 +1,25 @@
+{
+  "o360VApp": {
+    "audience": {
+      "home": {
+        "title": "Audiences",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Audience",
+        "createOrEditLabel": "Create or edit a Audience",
+        "notFound": "No Audiences found"
+      },
+      "created": "A new Audience is created with identifier {{ param }}",
+      "updated": "A Audience is updated with identifier {{ param }}",
+      "deleted": "A Audience is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Audience {{ id }}?"
+      },
+      "detail": {
+        "title": "Audience"
+      },
+      "id": "ID",
+      "channel": "Channel",
+      "brand": "Brand"
+    }
+  }
+}

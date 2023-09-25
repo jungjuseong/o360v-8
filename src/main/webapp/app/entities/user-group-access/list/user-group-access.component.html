@@ -1,0 +1,147 @@
+<div>
+  <h2 id="page-heading" data-cy="UserGroupAccessHeading">
+    <span jhiTranslate="o360VApp.userGroupAccess.home.title">User Group Accesses</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="o360VApp.userGroupAccess.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-user-group-access"
+        [routerLink]="['/user-group-access/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="o360VApp.userGroupAccess.home.createLabel"> Create a new User Group Access </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="userGroupAccesses?.length === 0">
+    <span jhiTranslate="o360VApp.userGroupAccess.home.notFound">No User Group Accesses found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="userGroupAccesses && userGroupAccesses.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="area.name">
+            <div class="d-flex">
+              <span jhiTranslate="o360VApp.userGroupAccess.area">Area</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="brand.name">
+            <div class="d-flex">
+              <span jhiTranslate="o360VApp.userGroupAccess.brand">Brand</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="audience.id">
+            <div class="d-flex">
+              <span jhiTranslate="o360VApp.userGroupAccess.audience">Audience</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="channel.id">
+            <div class="d-flex">
+              <span jhiTranslate="o360VApp.userGroupAccess.channel">Channel</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="country.name">
+            <div class="d-flex">
+              <span jhiTranslate="o360VApp.userGroupAccess.country">Country</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="userGroup.name">
+            <div class="d-flex">
+              <span jhiTranslate="o360VApp.userGroupAccess.userGroup">User Group</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let userGroupAccess of userGroupAccesses; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/user-group-access', userGroupAccess.id, 'view']">{{ userGroupAccess.id }}</a>
+          </td>
+          <td>
+            <div *ngIf="userGroupAccess.area">
+              <a [routerLink]="['/area', userGroupAccess.area.id, 'view']">{{ userGroupAccess.area.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="userGroupAccess.brand">
+              <a [routerLink]="['/brand', userGroupAccess.brand.id, 'view']">{{ userGroupAccess.brand.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="userGroupAccess.audience">
+              <a [routerLink]="['/audience', userGroupAccess.audience.id, 'view']">{{ userGroupAccess.audience.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="userGroupAccess.channel">
+              <a [routerLink]="['/channel', userGroupAccess.channel.id, 'view']">{{ userGroupAccess.channel.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="userGroupAccess.country">
+              <a [routerLink]="['/country', userGroupAccess.country.id, 'view']">{{ userGroupAccess.country.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="userGroupAccess.userGroup">
+              <a [routerLink]="['/user-group', userGroupAccess.userGroup.id, 'view']">{{ userGroupAccess.userGroup.name }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/user-group-access', userGroupAccess.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/user-group-access', userGroupAccess.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(userGroupAccess)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

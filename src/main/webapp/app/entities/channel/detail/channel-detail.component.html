@@ -1,0 +1,38 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="channel">
+      <h2 data-cy="channelDetailsHeading"><span jhiTranslate="o360VApp.channel.detail.title">Channel</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ channel.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="o360VApp.channel.channelType">Channel Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'o360VApp.ChannelType.' + channel.channelType }}">{{ channel.channelType }}</span>
+        </dd>
+        <dt><span jhiTranslate="o360VApp.channel.audience">Audience</span></dt>
+        <dd>
+          <div *ngIf="channel.audience">
+            <a [routerLink]="['/audience', channel.audience.id, 'view']">{{ channel.audience.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/channel', channel.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

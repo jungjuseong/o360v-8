@@ -1,0 +1,9 @@
+{
+  "o360VApp": {
+    "StakeholderType": {
+      "null": "",
+      "STAFF": "STAFF",
+      "THIRD_PARTY": "THIRD_PARTY"
+    }
+  }
+}

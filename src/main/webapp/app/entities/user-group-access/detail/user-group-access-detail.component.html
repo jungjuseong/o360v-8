@@ -1,0 +1,64 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="userGroupAccess">
+      <h2 data-cy="userGroupAccessDetailsHeading"><span jhiTranslate="o360VApp.userGroupAccess.detail.title">User Group Access</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ userGroupAccess.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="o360VApp.userGroupAccess.area">Area</span></dt>
+        <dd>
+          <div *ngIf="userGroupAccess.area">
+            <a [routerLink]="['/area', userGroupAccess.area.id, 'view']">{{ userGroupAccess.area.name }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="o360VApp.userGroupAccess.brand">Brand</span></dt>
+        <dd>
+          <div *ngIf="userGroupAccess.brand">
+            <a [routerLink]="['/brand', userGroupAccess.brand.id, 'view']">{{ userGroupAccess.brand.name }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="o360VApp.userGroupAccess.audience">Audience</span></dt>
+        <dd>
+          <div *ngIf="userGroupAccess.audience">
+            <a [routerLink]="['/audience', userGroupAccess.audience.id, 'view']">{{ userGroupAccess.audience.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="o360VApp.userGroupAccess.channel">Channel</span></dt>
+        <dd>
+          <div *ngIf="userGroupAccess.channel">
+            <a [routerLink]="['/channel', userGroupAccess.channel.id, 'view']">{{ userGroupAccess.channel.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="o360VApp.userGroupAccess.country">Country</span></dt>
+        <dd>
+          <div *ngIf="userGroupAccess.country">
+            <a [routerLink]="['/country', userGroupAccess.country.id, 'view']">{{ userGroupAccess.country.name }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="o360VApp.userGroupAccess.userGroup">User Group</span></dt>
+        <dd>
+          <div *ngIf="userGroupAccess.userGroup">
+            <a [routerLink]="['/user-group', userGroupAccess.userGroup.id, 'view']">{{ userGroupAccess.userGroup.name }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/user-group-access', userGroupAccess.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
