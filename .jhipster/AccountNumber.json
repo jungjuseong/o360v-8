@@ -1,0 +1,23 @@
+{
+  "applications": ["o360v"],
+  "changelogDate": "20230917083112",
+  "entityTableName": "account_number",
+  "fields": [
+    {
+      "fieldName": "accountNumber",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "AccountNumber",
+  "relationships": [
+    {
+      "otherEntityName": "project",
+      "otherEntityRelationshipName": "accountNumber",
+      "relationshipName": "project",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no"
+}

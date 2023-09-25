@@ -1,0 +1,29 @@
+{
+  "applications": ["o360v"],
+  "changelogDate": "20230917083512",
+  "entityTableName": "project_date",
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "projectDateType",
+      "fieldType": "ProjectDateType",
+      "fieldValues": "DATE_TYPE1,DATE_TYPE2"
+    }
+  ],
+  "name": "ProjectDate",
+  "relationships": [
+    {
+      "otherEntityField": "code",
+      "otherEntityName": "project",
+      "relationshipName": "project",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no"
+}

@@ -1,0 +1,32 @@
+{
+  "applications": ["o360v"],
+  "changelogDate": "20230917083912",
+  "entityTableName": "user_group",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "UserGroup",
+  "relationships": [
+    {
+      "otherEntityName": "userGroupAccess",
+      "otherEntityRelationshipName": "userGroup",
+      "relationshipName": "userGroupAccess",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "login",
+      "otherEntityName": "user",
+      "relationshipName": "user",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-many",
+      "relationshipValidateRules": "required",
+      "relationshipWithBuiltInEntity": true
+    }
+  ],
+  "searchEngine": "no"
+}

@@ -1,0 +1,162 @@
+{
+  "applications": ["o360v"],
+  "changelogDate": "20230917082712",
+  "entityTableName": "project",
+  "fields": [
+    {
+      "fieldName": "code",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "title",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fiscalYear",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "budget",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "startDate",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "deploymentDate",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "endDate",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "poNumber",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "jiraCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "jiraUpdate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "projectStatus",
+      "fieldType": "ProjectStatus",
+      "fieldValues": "READY,STARTED,COMPLETED"
+    },
+    {
+      "fieldName": "projectFinancialStatus",
+      "fieldType": "ProjectFinancialStatus",
+      "fieldValues": "POOR,BAD,GOOD"
+    }
+  ],
+  "name": "Project",
+  "relationships": [
+    {
+      "otherEntityName": "project",
+      "otherEntityRelationshipName": "parentProject",
+      "relationshipName": "project",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "projectDate",
+      "otherEntityRelationshipName": "project",
+      "relationshipName": "projectDate",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "stakeholder",
+      "otherEntityRelationshipName": "project",
+      "relationshipName": "stakeholder",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "projectFile",
+      "otherEntityRelationshipName": "project",
+      "relationshipName": "projectFile",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "projectComment",
+      "otherEntityRelationshipName": "project",
+      "relationshipName": "projectComment",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "country",
+      "otherEntityRelationshipName": "project",
+      "relationshipName": "country",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityField": "code",
+      "otherEntityName": "project",
+      "relationshipName": "parentProject",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "projectGoal",
+      "relationshipName": "goal",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "channel",
+      "relationshipName": "channel",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "costCenter",
+      "otherEntityName": "costCenter",
+      "relationshipName": "costCenter",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "accountNumber",
+      "otherEntityName": "accountNumber",
+      "relationshipName": "accountNumber",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "projectOwner",
+      "relationshipName": "projectOwner",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

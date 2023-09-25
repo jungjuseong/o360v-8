@@ -1,0 +1,23 @@
+{
+  "applications": ["o360v"],
+  "changelogDate": "20230917083212",
+  "entityTableName": "project_owner",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "ProjectOwner",
+  "relationships": [
+    {
+      "otherEntityName": "project",
+      "otherEntityRelationshipName": "projectOwner",
+      "relationshipName": "project",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no"
+}

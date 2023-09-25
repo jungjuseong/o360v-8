@@ -1,0 +1,56 @@
+{
+  "applications": ["o360v"],
+  "changelogDate": "20230917084012",
+  "entityTableName": "user_group_access",
+  "fields": [],
+  "name": "UserGroupAccess",
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "area",
+      "relationshipName": "area",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "brand",
+      "relationshipName": "brand",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityName": "audience",
+      "relationshipName": "audience",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityName": "channel",
+      "relationshipName": "channel",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "country",
+      "relationshipName": "country",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "userGroup",
+      "relationshipName": "userGroup",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no"
+}

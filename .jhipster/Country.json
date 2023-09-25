@@ -1,0 +1,23 @@
+{
+  "applications": ["o360v"],
+  "changelogDate": "20230917082612",
+  "entityTableName": "country",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "Country",
+  "relationships": [
+    {
+      "otherEntityName": "project",
+      "otherEntityRelationshipName": "country",
+      "relationshipName": "project",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "searchEngine": "no"
+}

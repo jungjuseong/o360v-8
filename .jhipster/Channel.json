@@ -1,0 +1,30 @@
+{
+  "applications": ["o360v"],
+  "changelogDate": "20230917084512",
+  "entityTableName": "channel",
+  "fields": [
+    {
+      "fieldName": "channelType",
+      "fieldType": "ChannelType",
+      "fieldValues": "EMAIL,SNS,PHONE,ZOOM"
+    }
+  ],
+  "name": "Channel",
+  "relationships": [
+    {
+      "otherEntityName": "project",
+      "otherEntityRelationshipName": "channel",
+      "relationshipName": "project",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "audience",
+      "relationshipName": "audience",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no"
+}

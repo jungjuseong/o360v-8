@@ -1,0 +1,25 @@
+{
+  "applications": ["o360v"],
+  "changelogDate": "20230917082912",
+  "entityTableName": "jira",
+  "fields": [
+    {
+      "fieldName": "url",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "apiKey",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "project",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "Jira",
+  "relationships": [],
+  "searchEngine": "no"
+}

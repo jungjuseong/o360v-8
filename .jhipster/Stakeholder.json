@@ -1,0 +1,49 @@
+{
+  "applications": ["o360v"],
+  "changelogDate": "20230917083712",
+  "entityTableName": "stakeholder",
+  "fields": [
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "cost",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "stakeholderType",
+      "fieldType": "StakeholderType",
+      "fieldValues": "STAFF,THIRD_PARTY"
+    }
+  ],
+  "name": "Stakeholder",
+  "relationships": [
+    {
+      "otherEntityName": "stakeholderComment",
+      "otherEntityRelationshipName": "stakeholder",
+      "relationshipName": "stakeholderComment",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "login",
+      "otherEntityName": "user",
+      "relationshipName": "user",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-many",
+      "relationshipValidateRules": "required",
+      "relationshipWithBuiltInEntity": true
+    },
+    {
+      "otherEntityField": "code",
+      "otherEntityName": "project",
+      "relationshipName": "project",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no"
+}

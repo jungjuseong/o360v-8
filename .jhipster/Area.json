@@ -1,0 +1,23 @@
+{
+  "applications": ["o360v"],
+  "changelogDate": "20230917084212",
+  "entityTableName": "area",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "Area",
+  "relationships": [
+    {
+      "otherEntityName": "brand",
+      "otherEntityRelationshipName": "area",
+      "relationshipName": "brand",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no"
+}

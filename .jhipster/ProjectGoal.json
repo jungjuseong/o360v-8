@@ -1,0 +1,31 @@
+{
+  "applications": ["o360v"],
+  "changelogDate": "20230917083612",
+  "entityTableName": "project_goal",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "projectCompletion",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "projectCompletionBurnRate",
+      "fieldType": "Integer"
+    }
+  ],
+  "name": "ProjectGoal",
+  "relationships": [
+    {
+      "otherEntityName": "project",
+      "otherEntityRelationshipName": "goal",
+      "relationshipName": "project",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no"
+}

@@ -1,0 +1,23 @@
+{
+  "applications": ["o360v"],
+  "changelogDate": "20230917083012",
+  "entityTableName": "cost_center",
+  "fields": [
+    {
+      "fieldName": "costCenter",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "CostCenter",
+  "relationships": [
+    {
+      "otherEntityName": "project",
+      "otherEntityRelationshipName": "costCenter",
+      "relationshipName": "project",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no"
+}

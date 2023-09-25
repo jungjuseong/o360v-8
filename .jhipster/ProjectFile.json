@@ -1,0 +1,30 @@
+{
+  "applications": ["o360v"],
+  "changelogDate": "20230917083412",
+  "entityTableName": "project_file",
+  "fields": [
+    {
+      "fieldName": "file",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "ProjectFile",
+  "relationships": [
+    {
+      "otherEntityField": "code",
+      "otherEntityName": "project",
+      "relationshipName": "project",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no"
+}

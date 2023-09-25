@@ -1,0 +1,31 @@
+{
+  "applications": ["o360v"],
+  "changelogDate": "20230917084312",
+  "entityTableName": "brand",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "Brand",
+  "relationships": [
+    {
+      "otherEntityName": "audience",
+      "otherEntityRelationshipName": "brand",
+      "relationshipName": "audience",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "area",
+      "relationshipName": "area",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no"
+}
